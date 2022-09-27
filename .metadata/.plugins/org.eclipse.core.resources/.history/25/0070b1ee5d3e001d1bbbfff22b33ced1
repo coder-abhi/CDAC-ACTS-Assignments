@@ -1,0 +1,14 @@
+package com.acts.stringTopicTester;
+
+public class StringMethodsTester {
+
+	public static void main(String[] args) {
+		String str = "This is Demo String !";
+		
+		System.out.println("Length of String : "+str.length());
+		
+		System.out.println("Charecter at 12 : "+str.charAt(13));
+		
+	}
+
+}

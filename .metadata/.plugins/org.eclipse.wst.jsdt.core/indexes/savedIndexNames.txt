@@ -1,0 +1,2 @@
+INDEX VERSION 1.4+E:\21_09_22_Abhix2\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+1828026965.index

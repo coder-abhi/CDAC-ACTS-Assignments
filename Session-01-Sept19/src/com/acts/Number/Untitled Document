@@ -1,0 +1,15 @@
+
+Day 1 Assignments:
+
+1. Write "Hello World" and compile using command line
+	javac FileName.java will generate a class file
+	java FileName
+
+2. Write A Program to add two numbers/ two characters
+
+3. Write a Program to add to Binary Numbers
+
+4. write a Program to swap two numbers with a temp variable
+
+5. Calculate Compound Interest
+ 

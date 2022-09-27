@@ -1,0 +1,9 @@
+package com.acts.stringTopicTester;
+
+public class StringAssignTypes {
+
+	public static void main(String[] args) {
+		
+	}
+
+}
