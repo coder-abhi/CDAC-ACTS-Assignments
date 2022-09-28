@@ -3,4 +3,8 @@
     <fullyQualifiedTypeName name="com.acts.classObj.ConstructorChaining"/>
     <fullyQualifiedTypeName name="com.acts.classObj.StudentDatabase"/>
     <fullyQualifiedTypeName name="com.acts.classObj.SuperClassName"/>
+    <fullyQualifiedTypeName name="com.acts.problemSolving.MaxAndSecondMax"/>
+    <fullyQualifiedTypeName name="com.acts.staticTester.StaticNonStaticTester"/>
+    <fullyQualifiedTypeName name="com.acts.staticBlock.StaticNonStatic"/>
+    <fullyQualifiedTypeName name="com.acts.strings.EmailValidation"/>
 </qualifiedTypeNameHistroy>
