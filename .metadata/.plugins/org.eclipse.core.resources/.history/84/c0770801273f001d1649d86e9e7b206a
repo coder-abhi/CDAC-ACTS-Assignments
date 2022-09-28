@@ -1,0 +1,5 @@
+package com.acts.strings;
+
+public class EmailValidation {
+
+}

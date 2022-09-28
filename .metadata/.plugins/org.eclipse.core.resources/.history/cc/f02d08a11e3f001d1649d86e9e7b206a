@@ -1,0 +1,10 @@
+package StringsTester;
+
+public class ReverseStringTester {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

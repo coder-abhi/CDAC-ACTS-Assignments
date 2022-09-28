@@ -1,0 +1,11 @@
+package com.acts.problemSolvingTester;
+import com.acts.problemSolving.MaxAndSecondMax;
+public class MaxAndSecondMaxTester {
+
+	public static void main(String[] args) {
+		String ans = MaxAndSecondMax.FindMaxSecondMax();
+		System.out.println(ans);
+
+	}
+
+}

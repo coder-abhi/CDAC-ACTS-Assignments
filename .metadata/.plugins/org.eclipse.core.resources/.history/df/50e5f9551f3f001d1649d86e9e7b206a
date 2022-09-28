@@ -1,0 +1,10 @@
+package com.actsStrings.Tester;
+
+public class StringMethodsTester {
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}
