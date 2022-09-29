@@ -1,0 +1,8 @@
+package com.acts.matrix;
+
+public class AdditionMatrix {
+	public static int[][] add(int[][] matrix1, int[][] matrix2,int n) {
+		int result[][] = new int[n][];
+		return result;
+	}
+}

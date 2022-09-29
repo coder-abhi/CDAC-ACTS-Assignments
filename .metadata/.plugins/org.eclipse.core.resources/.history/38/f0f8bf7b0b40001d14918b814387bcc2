@@ -1,0 +1,17 @@
+package com.acts.matrixTester;
+import com.acts.matrix.MatrixMethods;
+public class AdditionMatrixTester {
+
+	public static void main(String[] args) {
+		
+		int arr[][] = MatrixMethods.CreateMatrix(3, 3);
+		
+		int arr2[][] = MatrixMethods.CreateMatrix(3, 3);
+		
+		
+		System.out.println("Addition of Matrix will be : ");
+		MatrixMethods.PrintMatrix(arr, 3);
+
+	}
+
+}
