@@ -7,4 +7,9 @@
     <fullyQualifiedTypeName name="com.acts.staticTester.StaticNonStaticTester"/>
     <fullyQualifiedTypeName name="com.acts.staticBlock.StaticNonStatic"/>
     <fullyQualifiedTypeName name="com.acts.strings.EmailValidation"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="java.util.Arrays"/>
+    <fullyQualifiedTypeName name="com.acts.matrix.MatrixMethods"/>
+    <fullyQualifiedTypeName name="com.acts.matrix.AdditionMatrix"/>
+    <fullyQualifiedTypeName name="com.acts.matrix.MultiplicationMatrix"/>
 </qualifiedTypeNameHistroy>
