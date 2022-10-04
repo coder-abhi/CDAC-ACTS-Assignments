@@ -7,9 +7,17 @@
     <fullyQualifiedTypeName name="com.acts.staticTester.StaticNonStaticTester"/>
     <fullyQualifiedTypeName name="com.acts.staticBlock.StaticNonStatic"/>
     <fullyQualifiedTypeName name="com.acts.strings.EmailValidation"/>
-    <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="java.util.Arrays"/>
     <fullyQualifiedTypeName name="com.acts.matrix.MatrixMethods"/>
     <fullyQualifiedTypeName name="com.acts.matrix.AdditionMatrix"/>
     <fullyQualifiedTypeName name="com.acts.matrix.MultiplicationMatrix"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="com.acts.objArrayTester.StudentDatabaseTester"/>
+    <fullyQualifiedTypeName name="com.acts.objArray.StudentDatabase"/>
+    <fullyQualifiedTypeName name="com.acts.searchAlgo.BinarySearch"/>
+    <fullyQualifiedTypeName name="com.acts.EmployeeClass.Employee"/>
+    <fullyQualifiedTypeName name="com.acts.EmployeeClass.Person"/>
+    <fullyQualifiedTypeName name="com.acts.employeeClass.Employee"/>
+    <fullyQualifiedTypeName name="com.acts.employeeClass.Person"/>
+    <fullyQualifiedTypeName name="com.acts.player.Player"/>
 </qualifiedTypeNameHistroy>
