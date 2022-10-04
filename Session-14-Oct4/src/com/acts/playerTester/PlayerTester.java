@@ -13,7 +13,7 @@ public class PlayerTester {
 //		person.PrintName();
 		
 		
-		Player player = new Player();
+		Player player = new Player("ROHIT");
 		player.PrintName();
 		player.PrintRun();
 		

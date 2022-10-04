@@ -20,4 +20,11 @@
     <fullyQualifiedTypeName name="com.acts.employeeClass.Employee"/>
     <fullyQualifiedTypeName name="com.acts.employeeClass.Person"/>
     <fullyQualifiedTypeName name="com.acts.player.Player"/>
+    <fullyQualifiedTypeName name="com.acts.studentClass.Student"/>
+    <fullyQualifiedTypeName name="com.acts.studentClass.Person"/>
+    <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
+    <fullyQualifiedTypeName name="java.text.ParseException"/>
+    <fullyQualifiedTypeName name="java.sql.Date"/>
+    <fullyQualifiedTypeName name="com.acts.player.DateUtils"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
 </qualifiedTypeNameHistroy>
