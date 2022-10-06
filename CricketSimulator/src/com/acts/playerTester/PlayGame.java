@@ -2,7 +2,7 @@ package com.acts.playerTester;
 import java.util.Random;
 import java.util.Scanner;
 
-import com.acts.player.ScoreBoard;
+import com.acts.player.Inning;
 import com.acts.player.Player;
 import com.acts.player.Position;
 public class PlayGame {
@@ -20,12 +20,12 @@ public class PlayGame {
 	*/
 	
 	public static void SetAllTeam() {
-		ScoreBoard.AllTeam[0].setNamePosition("Abhishek", Position.BATSMAN);
-		ScoreBoard.AllTeam[1].setNamePosition("Rohit", Position.BATSMAN);
-		ScoreBoard.AllTeam[2].setNamePosition("Surya", Position.BATSMAN);
-		ScoreBoard.AllTeam[3].setNamePosition("Ishant", Position.BOWLER);
-		ScoreBoard.AllTeam[4].setNamePosition("SHami", Position.BOWLER);
-		ScoreBoard.AllTeam[5].setNamePosition("Bumrah", Position.BOWLER);
+		Inning.AllTeam[0].setNamePosition("Abhishek", Position.BATSMAN);
+		Inning.AllTeam[1].setNamePosition("Rohit", Position.BATSMAN);
+		Inning.AllTeam[2].setNamePosition("Surya", Position.BATSMAN);
+		Inning.AllTeam[3].setNamePosition("Ishant", Position.BOWLER);
+		Inning.AllTeam[4].setNamePosition("SHami", Position.BOWLER);
+		Inning.AllTeam[5].setNamePosition("Bumrah", Position.BOWLER);
 	}
 	
 	public static void SwapPlayer(Player player[]) {
@@ -54,51 +54,51 @@ public class PlayGame {
 		System.out.println("Enter Name of Bowler : ");
 		ScoreBoard.CurrentBowler[0].setNamePosition(sc.next(),Position.BOWLER);
 		*/
-		ScoreBoard.AllTeam = new Player[6];
+		Inning.AllTeam = new Player[6];
 		for(int i=0;i<6;i++) {
-			ScoreBoard.AllTeam[i] = new Player();
+			Inning.AllTeam[i] = new Player();
 		}
 		SetAllTeam();
-		ScoreBoard.PrintAllTeam();
-		ScoreBoard.OpeningBatsmanInitialise();
-		ScoreBoard.BowlerInitialise();
-		ScoreBoard.ShowScore();
+		Inning.PrintAllTeam();
+		Inning.OpeningBatsmanInitialise();
+		Inning.BowlerInitialise();
+		Inning.ShowScore();
 		
-		ScoreBoard.CompleteScoreBoard = new String[6][6];
+		Inning.CompleteScoreBoard = new String[6][6];
 		
 		while(ball != -1) {
 			System.out.print("\nPress 1 To Continue and -1 to Stop : ");
 			ball = sc.nextInt();
 			int currentBall = randInt.nextInt(-1,7);
 			System.out.print("\nCurrentBall = "+currentBall);
-			ScoreBoard.BallsInOver++;
-			ScoreBoard.CurrentBatsmans[0].addBallFaced();
+			Inning.BallsInOver++;
+			Inning.CurrentBatsmans[0].addBallFaced();
 //			boolean isOverComplete = ScoreBoard.isOversComplete();
 			
 			if (currentBall == 5) currentBall = 1;
 			if(currentBall == -1) {
-				ScoreBoard.Wickets++;
-				ScoreBoard.WicketTeken();
-				ScoreBoard.CompleteScoreBoard[ScoreBoard.Overs][ScoreBoard.BallsInOver-1] = "W";
+				Inning.Wickets++;
+				Inning.WicketTeken();
+				Inning.CompleteScoreBoard[Inning.Overs][Inning.BallsInOver-1] = "W";
 			}
 			else {
-				ScoreBoard.TotalRuns += currentBall;
-				ScoreBoard.CurrentBatsmans[0].addRuns(currentBall);
+				Inning.TotalRuns += currentBall;
+				Inning.CurrentBatsmans[0].addRuns(currentBall);
 				if(currentBall%2 == 1) {
-					SwapPlayer(ScoreBoard.CurrentBatsmans);
+					SwapPlayer(Inning.CurrentBatsmans);
 				}
-				ScoreBoard.CompleteScoreBoard[ScoreBoard.Overs][ScoreBoard.BallsInOver-1] = currentBall+"";
+				Inning.CompleteScoreBoard[Inning.Overs][Inning.BallsInOver-1] = currentBall+"";
 			}
 			
-			boolean isOverComplete = ScoreBoard.isOversComplete();
-			ScoreBoard.ShowScore();
+			boolean isOverComplete = Inning.isOversComplete();
+			Inning.ShowScore();
 			if(isOverComplete) {
-				ScoreBoard.ShowCompleteScoreBoard();
-				ScoreBoard.PrintCompleteScoreBoard();
+				Inning.ShowCompleteScoreBoard();
+				Inning.PrintCompleteScoreBoard();
 			} 
 			
 		}
-		ScoreBoard.PrintAllTeam();
+		Inning.PrintAllTeam();
 		
 		
 

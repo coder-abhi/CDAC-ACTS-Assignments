@@ -1,7 +1,7 @@
 package com.acts.player;
 
 public class PlayMatch {
-	public static void ShowWinner(ScoreBoard Innings1, ScoreBoard Innings2) {
+	public static void ShowWinner(Inning Innings1, Inning Innings2) {
 		
 		if(Innings1.currentOvers == 0 || Innings2.currentOvers == 0) System.out.println("Result cant Defined !!!");
 		
@@ -19,8 +19,8 @@ public class PlayMatch {
 		Teams A = new Teams("Mumbai Indians",Squad.MI);
 		Teams B = new Teams("Chennai Super Kings",Squad.CSK);
 		
-		ScoreBoard Innings1 = new ScoreBoard();
-		ScoreBoard Innings2 = new ScoreBoard();
+		Inning Innings1 = new Inning();
+		Inning Innings2 = new Inning();
 		
 		Innings1.StartMatch(A, B);
 		

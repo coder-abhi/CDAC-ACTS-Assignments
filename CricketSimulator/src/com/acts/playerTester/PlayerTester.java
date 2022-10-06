@@ -7,7 +7,7 @@ import java.util.Date;
 
 import javax.swing.text.StyledEditorKit.ForegroundAction;
 
-import com.acts.player.ScoreBoard;
+import com.acts.player.Inning;
 import com.acts.player.DateUtils;
 import com.acts.player.Person;
 import com.acts.player.Player;

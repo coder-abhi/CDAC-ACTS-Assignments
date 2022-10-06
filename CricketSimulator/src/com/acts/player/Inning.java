@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
-public class ScoreBoard implements StringFormater{
+public class Inning implements StringFormater{
 	// Innings Attributes 
 	public  int TotalRuns;
 	public  String CompleteScoreBoard[][];
