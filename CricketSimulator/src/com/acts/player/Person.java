@@ -8,7 +8,7 @@ public class Person {
 	String adress;
 	Date dateOfBirth;
 	public Person() {
-		this.name = "Abhishek";
+		this.name = "";
 		this.age = 0;
 		this.adress = "";
 	}
@@ -25,7 +25,5 @@ public class Person {
 	public String getName() {
 		return name;
 	}
-	public void PrintName() {
-		System.out.println(this.name);
-	}
+
 }

@@ -1,8 +1,9 @@
-package com.acts.player;
+package com.acts.playerTester;
 import java.util.Random;
 import java.util.Scanner;
 
 import com.acts.player.ScoreBoard;
+import com.acts.player.Player;
 import com.acts.player.Position;
 public class PlayGame {
 	/*

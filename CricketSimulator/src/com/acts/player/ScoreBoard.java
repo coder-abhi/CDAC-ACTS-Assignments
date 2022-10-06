@@ -5,6 +5,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class ScoreBoard implements StringFormater{
+	// Innings Attributes 
 	public  int TotalRuns;
 	public  String CompleteScoreBoard[][];
 	public  int currentOvers;
@@ -12,64 +13,74 @@ public class ScoreBoard implements StringFormater{
 	public  int Wickets;
 	public  int TotalOvers;
 
+	// Attributes for Teams
 	public  Player CurrentBatsmans[] = new Player[2];
 	public  Player CurrentBowler ;
-	public  Player AllTeam[];
+//	public  Player AllTeam[];
 	
 	public Teams BattingTeam;
 	public Teams BowlingTeam;
-//	public static int nextPlayerIndex = 0;
-//	public static int nextBowlerIndex = 5;
+
+	// To Check if Team is all out or not
 	public boolean isAllOut = false;
 	
 	
 	public void StartMatch(Teams A,Teams B) {
-		ResetScorBoard();
+		// Assigning first team for Batting and Second for Bowling
 		BattingTeam = A;
 		BowlingTeam = B;
+		
+		// Declare and Initialise ScoreBoard 2D Array
 		CompleteScoreBoard = new String[7][6];
 		
 		for(int i=0;i<7;i++) {
 			Arrays.fill(CompleteScoreBoard[i], "-");
 		}
 		
-		int ballSkip = 1;
+		// Deciding No. of Overs in Match
 		TotalOvers = 6;
 		
 		System.out.println("Batting Team : "+A.TeamName+"\t Bowling Team : "+B.TeamName);
 		
+		// Initialise Batsman and Bowler
 		OpeningBatsmanInitialise();
 		BowlerInitialise();
+		
 		int ball = 0;
+		
+		// Initialise Necessary Objects
 		Scanner sc = new Scanner(System.in);
 		Random randomInt = new Random();
+		
 		
 		while(currentOvers < TotalOvers && ball != -2) {
 			
 			if(ball <= 0) {
-				System.out.print("\nPress 1 To Continue and -1 to Stop : ");
+				System.out.print("\nPress No. of Balls to Play or -1 to Stop : ");
 				ball = sc.nextInt();
 			}
-		
-
 			
 			int currentBall = randomInt.nextInt(-1,7);
-			ball--;
 			
 			System.out.print("\nCurrentBall = ");
+			
+			// In criker 5 runs is so rare so 5 also means Single run in this program
 			if (currentBall == 5) currentBall = 1;
+			
+			ball--;
 			BallsInOver++;
 			CurrentBatsmans[0].addBallFaced();
 			
-//			boolean isOverComplete = ScoreBoard.isOversComplete();
-			
+			// if Random generate -1 Means its Wicket
 			if(currentBall == -1) {
 				System.err.println("Wicket!!!\t"+CurrentBatsmans[0].toStringBatsman()+" got out by "+CurrentBowler.getName());
-//				Wickets++;
+				
+				//Updating Score Board
 				CompleteScoreBoard[currentOvers][BallsInOver-1] = "W";
-				CurrentBowler.addWicket();
-//				if(Wickets == 5) break;
+				
+				// Increased Wickets count and check if Team is Allout or not
 				WicketTeken();
+				
 				if(isAllOut) break;
 			}
 			else {
@@ -88,9 +99,6 @@ public class ScoreBoard implements StringFormater{
 			if(isOverComplete) {
 				CurrentBowler.addOverBowled();
 				ShowOverStats();
-				
-//				ShowCompleteScoreBoard();
-//				PrintCompleteScoreBoard();
 			} 
 			
 		}
@@ -115,7 +123,7 @@ public class ScoreBoard implements StringFormater{
 			System.out.println(CurrentBatsmans[i].toStringBatsman());
 		}
 		System.out.println("\t\t\tTotal Runs : "+TotalRuns+"\tOvers : "+currentOvers+"."+BallsInOver
-				+"\tWickets : "+BattingTeam.Wickets);
+				+"\tWickets : "+Wickets);
 		
 		System.out.println("Next Bowler : "+CurrentBowler.getName());
 	}
@@ -137,53 +145,64 @@ public class ScoreBoard implements StringFormater{
 		}
 		return false;
 	}
+	
+	// Assigning 2 Player as Current Player from Team
 	public void OpeningBatsmanInitialise() {
-
 		CurrentBatsmans[0] = BattingTeam.AllTeam[0];
 		CurrentBatsmans[1] = BattingTeam.AllTeam[1]; 
 	}
+	
+	// Assigning 1 Bowler as Current Bowler
 	public void BowlerInitialise() {
 		CurrentBowler = BowlingTeam.NextBowler();
 	}
+	
+	// Increased Wickets count and check if Team is Allout or not
 	public void WicketTeken() {
+		
+		//Added Wicket to Bowler Profile
+		CurrentBowler.addWicket();
+		
 		Wickets++;
 		if(Wickets >= 6) {
 			System.out.println(BattingTeam.TeamName+" is All Out !!!");
 			isAllOut = true;
 			return ;
 		}
+		
+		// Assigning new Batsman From Batting Team to Current Batsman
 		CurrentBatsmans[0] = BattingTeam.NextBatsman();
 	}
 	
+	// Assigning New Bowler From Bowling Team -> to Current Bowler
 	public void ChangeBowler() {
 		CurrentBowler = BowlingTeam.NextBowler();
 		
 	}
 	   
-//	public static void PrintAllTeam() {
-//		for(int i=0;i<6;i++) {
-//			System.out.println(AllTeam[i].toString());
-//		}
-//	}
+	// Printing 2D array To Print All Balls in All Overs
 	public void PrintCompleteScoreBoard() {
-		
 		for(int i=0;i<6;i++) {
 			System.out.println(" ".repeat(15)+"Over "+(i+1)+" : "+Arrays.toString(CompleteScoreBoard[i]));
 		}
 	}
+	
+	// Swapping Player to Change strike of Current Batsman
+	// CurrentPlayer[0] means it is on strike!!
 	public void SwapPlayer(Player player[]) {
 		Player temp = player[0];
 		player[0] = player[1];
 		player[1] = temp;
 	}
 	
+	// Printing All Runs , Batting Statis and Bowling Stats
 	public void PrintMatchSummary() {
 		System.out.println("*".repeat(60));
 		System.out.println(" ".repeat(18)+"This Innings Stats 👇\n");
 		PrintCompleteScoreBoard();
 		
 		System.out.println("\nTotal Runs : "+TotalRuns+"\t\tTotal Overs : "+currentOvers+"."+BallsInOver
-				+"\tTotal Wickets : "+BattingTeam.Wickets);
+				+"\tTotal Wickets : "+Wickets);
 		
 		System.out.println("\n"+" ".repeat(18)+"Batting Stats 👇\n");
 		BattingTeam.PrintAllBatsman();
@@ -193,10 +212,4 @@ public class ScoreBoard implements StringFormater{
 		
 	}
 	
-	public void ResetScorBoard() {
-		TotalRuns = 0;
-		currentOvers = 0;
-		BallsInOver = 0;
-		Wickets = 0;	
-	}
 }
