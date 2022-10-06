@@ -29,6 +29,8 @@ public class ScoreBoard {
 		
 		TotalOvers = 6;
 		
+		System.out.println("Batting Team : "+A.TeamName+"\t Bowling Team : "+B.TeamName);
+		
 		OpeningBatsmanInitialise();
 		BowlerInitialise();
 		int ball = 1;
@@ -42,14 +44,15 @@ public class ScoreBoard {
 			
 			int currentBall = randomInt.nextInt(-1,7);
 			
+			System.out.print("\nCurrentBall = ");
 			if (currentBall == 5) currentBall = 1;
-			System.out.print("\nCurrentBall = "+currentBall);
 			BallsInOver++;
 			CurrentBatsmans[0].addBallFaced();
 			
 //			boolean isOverComplete = ScoreBoard.isOversComplete();
 			
 			if(currentBall == -1) {
+				System.err.println("Wicket");
 				Wickets++;
 				ScoreBoard.CompleteScoreBoard[currentOvers][BallsInOver-1] = "W";
 				CurrentBowler.addWicket();
@@ -57,6 +60,7 @@ public class ScoreBoard {
 				WicketTeken();
 			}
 			else {
+				System.out.print(currentBall);
 				TotalRuns += currentBall;
 				CurrentBatsmans[0].addRuns(currentBall);
 				CurrentBowler.addRunsGiveAway(currentBall);
@@ -70,6 +74,7 @@ public class ScoreBoard {
 			ShowScore();
 			if(isOverComplete) {
 				CurrentBowler.addOverBowled();
+				ChangeBowler();
 				ShowCompleteScoreBoard();
 //				PrintCompleteScoreBoard();
 			} 
@@ -87,6 +92,8 @@ public class ScoreBoard {
 		}
 		System.out.println("\t\t\tTotal Runs : "+TotalRuns+"\tOvers : "+currentOvers+"."+BallsInOver
 				+"\tWickets : "+BattingTeam.Wickets);
+		
+		System.out.println("Next Bowler : "+CurrentBowler.getName());
 	}
 	
 	public static void ShowScore() {
@@ -107,7 +114,7 @@ public class ScoreBoard {
 	public static void OpeningBatsmanInitialise() {
 
 		CurrentBatsmans[0] = BattingTeam.AllTeam[0];
-		CurrentBatsmans[1] = BattingTeam.AllTeam[1];
+		CurrentBatsmans[1] = BattingTeam.AllTeam[1]; 
 	}
 	public static void BowlerInitialise() {
 		CurrentBowler = BowlingTeam.NextBowler();
@@ -116,8 +123,9 @@ public class ScoreBoard {
 		CurrentBatsmans[0] = BattingTeam.NextBatsman();
 	}
 	
-	public static void ChangeBowler(Player NextBowler) {
-		CurrentBowler = NextBowler;
+	public static void ChangeBowler() {
+		CurrentBowler = BowlingTeam.NextBowler();
+		
 	}
 	   
 //	public static void PrintAllTeam() {

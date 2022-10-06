@@ -1,4 +1,5 @@
 package com.acts.playerTester;
+import java.awt.datatransfer.StringSelection;
 import java.text.ParseException;
 
 import java.util.Date;
@@ -24,8 +25,19 @@ public class PlayerTester {
 //		Date dob = DateUtils.getDate("04/10/2022", DateUtils.DD_MM_YYYY);
 		
 		
-		System.out.println(++ScoreBoard.TotalRuns);
-		System.out.println(++ScoreBoard.TotalRuns);
+//		System.out.println(++ScoreBoard.TotalRuns);
+//		System.out.println(++ScoreBoard.TotalRuns);
+		int len = 10;
+		String name = "DJ";
+		String NewName = " ".repeat(len-name.length());
+		name += NewName;
+
+		String name1 = "Abhishek";
+		String NewName1 = " ".repeat(len - name1.length());
+		name1 += NewName1;
+		
+		System.out.println(name+" : "+NewName.length());
+		System.out.println(name1+" : "+NewName1.length());
 
 		
 	}
