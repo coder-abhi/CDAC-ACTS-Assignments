@@ -3,7 +3,7 @@ package com.acts.player;
 import java.util.Date;
 import java.util.Scanner;
 
-public class Player extends Person{
+public class Player extends Person implements StringFormater{
 	int run;
 	Position position;
 	int avg;
@@ -63,10 +63,10 @@ public class Player extends Person{
 	}
 
 	public String toStringBatsman() {
-		return this.name+"  "+this.run+"("+this.ballFaced+")";
+		return StringFormater.Formate(this.name, 15)+this.run+"("+this.ballFaced+")";
 	}
 	public String toStringBowler() {
-		return this.name+"\tOvers : "+this.OversBowled+"\tRuns : "+this.RunGiveAway+"\tWickets : "+this.Wickets;
+		return StringFormater.Formate(this.name, 15) +"\tOvers : "+this.OversBowled+"\tRuns : "+this.RunGiveAway+"\tWickets : "+this.Wickets;
 	}
 	
 	public void PrintProfile() {

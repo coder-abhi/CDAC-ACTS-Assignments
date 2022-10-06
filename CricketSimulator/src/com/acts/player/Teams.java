@@ -51,13 +51,13 @@ public class Teams {
 	
 	public void PrintAllBatsman() {
 		for(int i=0;i<7;i++) {
-			if(AllTeam[i].getBallFaced() != 0) System.out.println(AllTeam[i].toStringBatsman());
+			if(AllTeam[i].getBallFaced() != 0) System.out.println(" ".repeat(5)+AllTeam[i].toStringBatsman());
 		}
 	}
 	
 	public void PrintAllBowler() {
 		for(int i=0;i<7;i++) {
-			if(AllTeam[i].OversBowled > 0) System.out.println(AllTeam[i].toStringBowler());
+			if(AllTeam[i].OversBowled > 0) System.out.println(" ".repeat(5)+AllTeam[i].toStringBowler());
 		}
 	}
 	
