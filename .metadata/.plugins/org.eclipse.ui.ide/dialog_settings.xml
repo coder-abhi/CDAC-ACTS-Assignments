@@ -6,6 +6,8 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="E:\JavaCodeB4\workspace"/>
+			<item value="E:\B2_Abhi"/>
 			<item value="E:\Projects\CDAC-ACTS-Assignments"/>
 		</list>
 	</section>

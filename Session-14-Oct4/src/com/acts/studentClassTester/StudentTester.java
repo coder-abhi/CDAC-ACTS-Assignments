@@ -8,11 +8,12 @@ public class StudentTester {
 	public static void main(String[] args) {
 		
 		// Simple Student Object Created
-		Student st1 = new Student();
-		st1.PrintStudent();
+        Person p1;
+		Student st1 = (Student) new Person();
+//		st1.PrintStudent();
 		
-		st1.canLearn();
-		st1.canWalk();
+//		st1.canLearn();
+//		st1.canWalk();
 		
 		// Simple Person Object Created
 //		Person p1 = new Person();
