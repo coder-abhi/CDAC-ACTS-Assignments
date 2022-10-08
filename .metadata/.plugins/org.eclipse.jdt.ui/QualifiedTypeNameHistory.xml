@@ -33,4 +33,6 @@
     <fullyQualifiedTypeName name="java.awt.datatransfer.StringSelection"/>
     <fullyQualifiedTypeName name="javax.swing.text.StyledEditorKit.ForegroundAction"/>
     <fullyQualifiedTypeName name="java.text.Format"/>
+    <fullyQualifiedTypeName name="com.acts.dmart.DefaultStocks"/>
+    <fullyQualifiedTypeName name="com.acts.dmart.StringFormater"/>
 </qualifiedTypeNameHistroy>

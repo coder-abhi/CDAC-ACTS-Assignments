@@ -22,11 +22,11 @@ public class PlayMatch {
 		Inning Innings1 = new Inning();
 		Inning Innings2 = new Inning();
 		
-		Innings1.StartMatch(A, B);
+		Innings1.StartMatch(A, B,-1);
 		
 		System.out.println("\nPress 1 to Continue for Second Innings : ");
 		
-		Innings2.StartMatch(B,A);
+		Innings2.StartMatch(B,A,Innings1.TotalRuns);
 		
 		ShowWinner(Innings1,Innings2);
 		

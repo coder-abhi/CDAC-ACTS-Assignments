@@ -20,7 +20,7 @@ public class ScoreCardUtils {
 		
 		System.out.println("\t  This Over ("+(currentOvers+1)+") : "+Arrays.toString(CompleteScoreBoard[currentOvers-1]) );
 		ShowScore();
-		ChangeBowler();
+//		ChangeBowler();
 		System.out.println("\nNext Bowler : "+StringFormater.Formate( CurrentBowler.getName(), 20) + "Batsman on Strike : "+CurrentBatsmans[0].getName());
 		System.out.println("-".repeat(60));
 	}

@@ -25,7 +25,7 @@ public class Inning implements StringFormater{
 	public boolean isAllOut = false;
 	
 	
-	public void StartMatch(Teams A,Teams B) {
+	public void StartMatch(Teams A,Teams B, int targetRun) {
 		// Assigning first team for Batting and Second for Bowling
 		BattingTeam = A;
 		BowlingTeam = B;
@@ -84,7 +84,10 @@ public class Inning implements StringFormater{
 				if(isAllOut) break;
 			}
 			else {
-				System.out.print(currentBall);
+				if(targetRun != -1) {
+					if(TotalRuns > targetRun) return;
+				}
+				System.err.print(currentBall);
 				TotalRuns += currentBall;
 				CurrentBatsmans[0].addRuns(currentBall);
 				CurrentBowler.addRunsGiveAway(currentBall);
@@ -95,10 +98,10 @@ public class Inning implements StringFormater{
 			}
 			
 			boolean isOverComplete = isOversComplete();
-			ShowScore();
+			ShowScore(targetRun);
 			if(isOverComplete) {
 				CurrentBowler.addOverBowled();
-				ShowOverStats();
+				ShowOverStats(targetRun);
 			} 
 			
 		}
@@ -108,10 +111,10 @@ public class Inning implements StringFormater{
 		
 	}
 	
-	public void ShowOverStats() {
+	public void ShowOverStats(int targetRuns) {
 		System.out.println("-".repeat(60));
-		System.out.println("\t  This Over ("+(currentOvers+1)+") : "+Arrays.toString(CompleteScoreBoard[currentOvers-1]) );
-		ShowScore();
+		System.out.println("\t  This Over ("+(currentOvers)+") : "+Arrays.toString(CompleteScoreBoard[currentOvers-1]) );
+		ShowScore(targetRuns);
 		ChangeBowler();
 		System.out.println("\nNext Bowler : "+StringFormater.Formate( CurrentBowler.getName(), 20) + "Batsman on Strike : "+CurrentBatsmans[0].getName());
 		System.out.println("-".repeat(60));
@@ -128,11 +131,17 @@ public class Inning implements StringFormater{
 		System.out.println("Next Bowler : "+CurrentBowler.getName());
 	}
 	
-	public void ShowScore() {
+	public void ShowScore(int targetRun) {
 		System.out.println("\nBatsmans   : *"+StringFormater.Formate(CurrentBatsmans[0].getName(),10)+StringFormater.Formate(CurrentBatsmans[1].getName(),13)
 				+ "|   Bowler : "+StringFormater.Formate(CurrentBowler.getName(),10));
 		System.out.println("Total Runs : "+ TotalRuns+"\t\tOvers : "+currentOvers+"."+BallsInOver
 				+"\t Total Wickets : "+Wickets);
+		
+		if(targetRun != -1) {
+			if(currentOvers >= 3) {
+				System.out.println("\t( "+BattingTeam.TeamName+"\tneed  "+(targetRun- TotalRuns)+"\tin "+(TotalOvers*6 - currentOvers*6 - BallsInOver)+"  balls )");
+			}
+		}
 	}
 	
 
@@ -211,5 +220,6 @@ public class Inning implements StringFormater{
 		BowlingTeam.PrintAllBowler();
 		
 	}
+	
 	
 }
