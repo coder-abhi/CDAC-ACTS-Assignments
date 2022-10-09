@@ -1,9 +1,0 @@
-package com.acts.strings;
-
-public class EmailValidation {
-	public boolean  CheckEmail(String input) {
-		if(null == input || input.isBlank() || input.isEmpty()) return false;
-		if(input.length() <= 10) return false;
-		return true;
-	}
-}
