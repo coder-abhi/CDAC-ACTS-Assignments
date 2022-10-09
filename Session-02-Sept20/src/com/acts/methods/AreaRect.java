@@ -9,9 +9,9 @@ public class AreaRect{
 		System.out.println("Enter length and breadth of rectangle");
 		l= sc.nextDouble();
 		b= sc.nextDouble();
-		
+
 		area= l*b;
 		System.out.printf("Area of Rectangle =  %.2f", area);
-	
+
 	}
 }

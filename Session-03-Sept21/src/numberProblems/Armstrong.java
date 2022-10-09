@@ -11,6 +11,7 @@ public class Armstrong{
 		System.out.println("Enter Number to check for Armstrong ");
 		str= sc.next();
 		num=Integer.parseInt(str);
+		
 		for(int i= str.length()-1; i>=0 ; i--)
 		{
 			r=num%10;

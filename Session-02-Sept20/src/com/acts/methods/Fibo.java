@@ -17,6 +17,6 @@ public class Fibo{
 			a2=sum;
 			sum=0;
 		}
-	
+
 	}
 }

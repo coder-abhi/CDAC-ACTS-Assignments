@@ -7,9 +7,8 @@ private double billAfterTax;
  public Customer(String name) {
 	 this.customerName = name;
  }
-//public void setAfterTaxBill(double billAfterTax) {
-//	this.billAfterTax = billAfterTax;
-//}
+
+
 public double getBillAfterTax() {
 	return billAfterTax;
 }

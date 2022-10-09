@@ -53,6 +53,7 @@ public class StoreTester {
 					Store.generateBill(person);
 					break;
 					}
+					
 				}while(choice != 0);
 			
 			}

@@ -9,7 +9,7 @@ public class StudentTester {
 		
 		// Simple Student Object Created
         Person p1;
-		Student st1 = (Student) new Person();
+//		Student st1 = (Student) new Person();
 //		st1.PrintStudent();
 		
 //		st1.canLearn();

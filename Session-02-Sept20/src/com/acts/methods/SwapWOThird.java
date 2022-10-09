@@ -14,7 +14,7 @@ public class SwapWOThird{
 	b=a-b;
 	a=a-b;
 	System.out.println("Numbers after swap " + a +" "+ b);
-	
-	
+
+
  }
 }

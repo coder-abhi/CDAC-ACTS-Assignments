@@ -1,8 +1,8 @@
 
 public class PowerOfNum {
    static int base = 3, exponent = 4; // Class variables
-   static long result = 1;      
-   
+   static long result = 1;
+
 
 
 	// Mthod 1: Using while loop
@@ -14,9 +14,9 @@ public class PowerOfNum {
 	    }
 
 	    System.out.println("Answer = " + result);
-	   
+
    }
-   
+
    // Method 2: Using for loop
    public static void for_loop(){
 
@@ -26,8 +26,8 @@ public class PowerOfNum {
 
 	    System.out.println("Answer = " + result);
    }
-   
-   
+
+
    // Method 3: Using inbuilt function
    public static void pow_function(){
 	   double result_1 = Math.pow(base, exponent); //local variable
@@ -35,12 +35,12 @@ public class PowerOfNum {
 	    System.out.println("Answer = " + result_1);
    }
 
-	
+
 	public static void main(String [] args){
 		PowerOfNum pn = new PowerOfNum();
-		pn.pow_function();
-		pn.while_loop();
-		pn.for_loop();	
+		PowerOfNum.pow_function();
+		PowerOfNum.while_loop();
+		PowerOfNum.for_loop();
 	}
 
 }
