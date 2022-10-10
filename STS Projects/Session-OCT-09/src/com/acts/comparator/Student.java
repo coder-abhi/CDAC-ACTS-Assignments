@@ -17,6 +17,9 @@ public class Student {
 		this.adress = adress;
 		this.division = division;
 	}
+	public Student() {
+		super();
+	}
 	@Override
 	public String toString() {
 		return "Student [name=" + name + ", roll=" + roll + ", DOB=" + DOB + ", adress=" + adress + ", division="

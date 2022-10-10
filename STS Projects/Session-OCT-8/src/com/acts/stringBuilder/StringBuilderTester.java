@@ -17,8 +17,8 @@ public class StringBuilderTester {
 		stringBuilder.replace(index, index+3, "");
 		System.out.println(stringBuilder);
 
-		stringBuilder.reverse();
-		System.out.println(stringBuilder);
+		//stringBuilder.reverse();
+		System.out.println(stringBuilder.reverse());
 		String strOut = stringBuilder.toString();
 		System.out.println(strOut);
 	}

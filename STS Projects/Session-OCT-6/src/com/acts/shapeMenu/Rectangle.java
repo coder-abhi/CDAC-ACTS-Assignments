@@ -4,7 +4,7 @@ public class Rectangle implements Shape{
 	private double length;
 	private double breadth;
 	
-	public Rectangle(double length, double breadth) { // Tight Encapsulation i.e. object cannot be created without passing field as there is no default constructor
+	public Rectangle(double length, double breadth) { 
 		this.length = length;
 		this.breadth = breadth;
 	}
