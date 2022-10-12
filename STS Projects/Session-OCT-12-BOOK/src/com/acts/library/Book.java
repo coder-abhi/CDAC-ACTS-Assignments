@@ -29,7 +29,7 @@ public class Book {
 	}
 	@Override
 	public String toString() {
-		return "Book [ISBN=" + ISBN + ", bookName=" + bookName + ", author=" + author + ", qty=" + qty + "]";
+		return  Formate.formate(ISBN+"", 10) + Formate.formate(bookName+"", 20) +Formate.formate(author+"", 20) + qty ;
 	}
 
 	public Integer getQty() {

@@ -34,8 +34,8 @@ public class TransactionDB {
 
 	@Override
 	public String toString() {
-		return "TransactionDB [transID=" + transID + ", transBookISBN=" + transBookISBN + ", transMemberID="
-				+ transMemberID + ", issueDate=" + issueDate + ", submitDate=" + submitDate + "]";
+		return  transID + " ".repeat(20) + transBookISBN + " ".repeat(20)
+				+ transMemberID + " ".repeat(20) + issueDate + " ".repeat(20) + submitDate;
 	}
 	public Integer getTransMemberID() {
 		return transMemberID;

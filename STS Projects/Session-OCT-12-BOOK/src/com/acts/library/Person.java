@@ -24,10 +24,9 @@ public class Person {
 	}
 	@Override
 	public String toString() {
-		return "Person [memberID=" + memberID + ", personName=" + personName + ", personBookID=" + personBookID
-				+ ", personPenalty=" + personPenalty + "]";
+		return  Formate.formate(memberID+"", 10) + Formate.formate(personName, 20) + Formate.formate(personBookID+"", 15) + personPenalty;
 	}
-
+	
 	public void setMemberID(Integer memberID) {
 		this.memberID = memberID;
 	}

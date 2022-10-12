@@ -26,4 +26,17 @@ public class LibraryUtil {
 		return member;
 	}
 	
+	public static Person addBook () {
+		
+
+		System.err.println("Enter Book Name ");
+		String name = sc.nextLine();
+		
+		sc.nextLine();
+		
+		Person member = new Person(personCount++,name);
+
+		return member;
+	}
+	
 }

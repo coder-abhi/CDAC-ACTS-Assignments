@@ -16,6 +16,8 @@ public class Library {
 	
 	public static void ShowAvailableBooks() {
 		Set<Integer> keyList = bookList.keySet();
+		System.err.println("\n"+Formate.formate("ISBN", 10) + Formate.formate("BOOK NAME", 20)
+		+ Formate.formate("AUTHUR NAME", 20) + "QTY");
 		for(Integer key : keyList) {
 			System.out.println(bookList.get(key).toString());
 		}
@@ -23,6 +25,8 @@ public class Library {
 	
 	public static void ShowMembers() {
 		Set<Integer> keyList = memberList.keySet();
+		System.err.println("\n"+Formate.formate("MEMBER ID", 10) + Formate.formate("NAME", 20)
+		+ Formate.formate("BOOK ID", 20) + "PENDING PENALTY");
 		for(Integer key : keyList) {
 			System.out.println(memberList.get(key).toString());
 		}
@@ -48,7 +52,7 @@ public class Library {
 		TransactionDB db = new TransactionDB(transCounter++, BookId, memberId, LocalDate.now());
 		
 		transactionList.put(db.getTransID(), db);
-		System.out.println("Trans successfull");
+		System.out.println("Book Rented successfull");
 	}
 	
 	public static void submitBook(Integer memberId) {
@@ -61,6 +65,13 @@ public class Library {
 		LocalDate submitDate = LocalDate.parse("2022-10-08");
 		Integer penalty = calculateDelay(memberId, currentTrans.getIssueDate(),submitDate);
 		currentMember.setPersonPenalty(penalty);
+		
+		if(penalty > 0) {
+			System.err.println("You have "+penalty + " to pay !!!");
+		}
+		else {
+			System.out.println("Book Sumbitted successfully");
+		}
 		
 	}
 	
@@ -80,6 +91,7 @@ public class Library {
 	
 	public static void addNewMember(Person member) {
 		memberList.put(member.getMemberID(), member);
+		System.out.println("Your Member ID : "+member.getMemberID());
 	}
 	
 }
