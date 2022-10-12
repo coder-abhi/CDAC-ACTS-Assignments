@@ -15,28 +15,46 @@ public class LibraryUtil {
 	
 	public static Person addMember () {
 		
-
 		System.err.println("Enter Person Name ");
-		
 		String name = sc.nextLine();
-		sc.nextLine();
+//		sc.nextLine();
+//		sc.nextLine();
 		
-		Person member = new Person(personCount++,name);
+		// Setting Password
+		String pass;
+		String passCheck;
+		
+		do {
+			System.out.println("Create New Password");
+			pass = sc.next();
+			
+			System.out.println("Type your password again ");
+			passCheck = sc.next();	
+			if(!pass.equals(passCheck)) System.err.println("2 Passwords Didn't Match");
+			
+		}while(!pass.equals(passCheck));
+		
+		Person member = new Person(personCount++,name,pass);
 
 		return member;
 	}
 	
-	public static Person addBook () {
+	public static Book addBook () {
 		
 
-		System.err.println("Enter Book Name ");
+		System.out.println("Enter Book Name ");
 		String name = sc.nextLine();
-		
 		sc.nextLine();
+		System.out.println("Enter Book Author ");
+		String author = sc.nextLine();
+		sc.nextLine();
+		System.out.println("Enter Book Quantity ");
+		int qty = sc.nextInt();
 		
-		Person member = new Person(personCount++,name);
+		
+		Book book = new Book(bookCount++,name,author,qty);
 
-		return member;
+		return book;
 	}
 	
 }

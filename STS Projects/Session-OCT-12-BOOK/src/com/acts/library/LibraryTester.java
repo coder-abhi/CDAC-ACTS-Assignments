@@ -1,6 +1,7 @@
 package com.acts.library;
 
 import java.text.Normalizer.Form;
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class LibraryTester {
@@ -12,18 +13,18 @@ public class LibraryTester {
 		Library.bookList.put(  1004, new Book(1004,"Alchamist","Canon Dayle",5));
 		Library.bookList.put(  1005, new Book(1005,"How To","Canon Dayle",5));
 
-		Library.ShowAvailableBooks();
+//		Library.ShowAvailableBooks();
 
 
-		Library.memberList.put(11, new Person(11 ,"Abhi"));
-		Library.memberList.put(12, new Person(12 ,"Deepesh"));
+		Library.memberList.put(11, new Person(11 ,"Abhi","78789898"));
+		Library.memberList.put(12, new Person(12 ,"Deepesh","qwerty"));
 
-		Library.ShowMembers();
+//		Library.ShowMembers();
 
-		Library.RentBook(11,1001);
+		Library.RentBook(11,1001,LocalDate.parse("2022-09-20"));
 		System.out.println("-".repeat(60));
-		Library.ShowAvailableBooks();
-		Library.ShowMembers();
+//		Library.ShowAvailableBooks();
+//		Library.ShowMembers();
 		Library.ShowTransaction();
 
 
@@ -36,23 +37,57 @@ public class LibraryTester {
 					+ "\n1. Login as Owner"
 					+ "\n2. Login as Member");
 			choice = sc.nextInt();
-
+			
 			switch (choice) {
 			case 1: {
+				String ownerPass;
+				do {
+					System.out.println("Enter Your Password: ");
+					ownerPass = sc.next();
+				}while(!"Admin407".equals(ownerPass));
+				
+				int ownerChoice = 0;
+				do {
+					System.out.println("\n"+Formate.title("Owner Dashboard", 60));
 				System.out.println(""
-						+ "1. Print Member List"
-						+ "2. Add New Books");
+						+ "\n1. Print Member List"
+						+ "\n2. Add New Books"
+						+ "\n3. Show Available Books");
+					ownerChoice = sc.nextInt();
+					switch (ownerChoice) {
+						case 1: {
+							Library.ShowMembers();
+							break;
+						}
+						case 2:{
+							Book book = LibraryUtil.addBook();
+							Library.bookList.put(book.getISBN(),book);
+							break;
+						}
+						case 3:{
+							Library.ShowAvailableBooks();
+							break;
+						}
+					}
+				}while(ownerChoice!=0);
 
-
+				break;
 			}
 			case 2:
-
+			{
 				int memberChoice = 0;
 				int memberID;
 				System.out.println("Do you have Library Account ? Y/N");
 				if("Y".equals(sc.next())) {
-					System.out.println("Enter Your Member ID : ");
-					memberID = sc.nextInt();
+					String userPass;
+					do {
+						System.out.println("Enter Your Member ID : ");
+						memberID = sc.nextInt();
+						System.out.println("Enter Your Password: ");
+
+						userPass = sc.next();
+					}while(!Library.memberList.get(memberID).checkPass(userPass));
+
 				} else {
 					System.out.println(Formate.title("Creating your Account", 40));
 					Person member = LibraryUtil.addMember();
@@ -60,11 +95,13 @@ public class LibraryTester {
 					break;
 				}
 				do {
-
+					System.out.println("\n"+Formate.title("Member Dashboard", 60));
 					System.out.println(" "
 							+ "\n 1. Show Available Books"
-							+ "\n 2. Rent a Book"
+							+ "\n 2. Issue a Book"
 							+ "\n 3. Submit a Book "
+							+ "\n 4. Show Member Profile "
+							+ "\n 5. Pay Your Penalty"
 							+ "\n 0. Exit menu ");
 
 					System.out.println("Enter Choice: ");
@@ -79,32 +116,50 @@ public class LibraryTester {
 					case 2: {
 						System.out.println("Enter ISBN of required book : ");
 						int bookID = sc.nextInt();
-						Library.RentBook(memberID, bookID);
+						
+						System.out.println("Enter Today's Date");
+						String issueDate = sc.next();
+						Library.RentBook(memberID, bookID, LocalDate.parse(issueDate));
 						break;
 
 					}
 					case 3: {
-						Library.submitBook(memberID);
+						System.out.println("Enter Today's Date");
+						String submitDate = sc.next();
+						Library.submitBook(memberID, LocalDate.parse(submitDate));
 						break;
 					}
-					default : {
-						System.err.println("Wrong choice entered !! Enter again");
-						//						break;
+					case 4:{
+						System.err.println("\n"+Formate.formate("MEMBER ID", 10) + Formate.formate("NAME", 20)
+						+ Formate.formate("BOOK ID", 20) + "PENDING PENALTY");
+
+						System.out.println(Library.memberList.get(memberID).toString());
+
+//						Library.ShowMembers();
+						break;
+					}
+					case 5:{
+						
+						System.err.println("You have "+Library.memberList.get(memberID).getPersonPenalty() + " to pay !!!");
+						System.out.println("Enter Amount You want to Pay");
+						int amount = sc.nextInt();
+						Library.memberList.get(memberID).setPersonPenalty(Library.memberList.get(memberID).getPersonPenalty() - amount);
+					}
+					case 9:{
+						Library.ShowTransaction();
+						break;
 					}
 					}
 				}while(memberChoice !=0);
-
-
+				break;
+			}
 
 			default : {
 				System.err.println("Wrong choice entered !! Enter again");
 				//				break;
 			}
 
-
-
 			}
-
 
 		}while(choice != 0);
 		/*

@@ -19,6 +19,9 @@ public class TransactionDB {
 	
 	
 	
+
+
+
 	public Integer getTransID() {
 		return transID;
 	}
@@ -48,5 +51,13 @@ public class TransactionDB {
 	}
 	public void setIssueDate(LocalDate issueDate) {
 		this.issueDate = issueDate;
+	}	
+	public LocalDate getSubmitDate() {
+		return submitDate;
 	}
+
+	public void setSubmitDate(LocalDate submitDate) {
+		this.submitDate = submitDate;
+	}
+
 }

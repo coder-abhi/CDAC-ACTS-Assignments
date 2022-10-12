@@ -25,8 +25,8 @@ public class Library {
 	
 	public static void ShowMembers() {
 		Set<Integer> keyList = memberList.keySet();
-		System.err.println("\n"+Formate.formate("MEMBER ID", 10) + Formate.formate("NAME", 20)
-		+ Formate.formate("BOOK ID", 20) + "PENDING PENALTY");
+		System.err.println("\n"+Formate.formate("MEMBER ID", 15) + Formate.formate("NAME", 20)
+		+ Formate.formate("BOOK ID", 15) + "PENDING PENALTY");
 		for(Integer key : keyList) {
 			System.out.println(memberList.get(key).toString());
 		}
@@ -38,36 +38,45 @@ public class Library {
 			System.out.println(transactionList.get(key).toString());
 		}
 	}
-	public static void RentBook(Integer memberId, Integer BookId) {
+	public static void RentBook(Integer memberId, Integer BookId, LocalDate issueDate) {
 		
-//		if(isBookAvailable) {
-//			
-//		}
 		Person currentMember = memberList.get(memberId);
+		
+		if(currentMember.getPersonBook() != -1) {
+			System.err.println("You Already issued a Book. Please Sumbit it first!!");
+		}
+		
 		Book currentBook = bookList.get(BookId);
 		
 		currentBook.setQty(currentBook.getQty()-1);
 		currentMember.setPersonBook(BookId);
 		
-		TransactionDB db = new TransactionDB(transCounter++, BookId, memberId, LocalDate.now());
+//		System.out.println("Enter Today's Date in YYYY-MM-DD");
 		
+		TransactionDB db = new TransactionDB(transCounter++, BookId, memberId, issueDate);
+		currentMember.setCurrentTrans(db.getTransID());
 		transactionList.put(db.getTransID(), db);
 		System.out.println("Book Rented successfull");
 	}
 	
-	public static void submitBook(Integer memberId) {
+	public static void submitBook(Integer memberId, LocalDate submitDate) {
+		
 		Person currentMember = memberList.get(memberId);
 		Book currentBook = bookList.get(currentMember.getPersonBook());
+		
+		
 		TransactionDB currentTrans = transactionList.get(currentMember.getCurrentTrans());
 		
 		currentBook.setQty(currentBook.getQty()+1);
-		currentMember.setPersonBook(null);
-		LocalDate submitDate = LocalDate.parse("2022-10-08");
+		currentMember.setPersonBook(-1);
+		
+		currentTrans.setSubmitDate(submitDate);
 		Integer penalty = calculateDelay(memberId, currentTrans.getIssueDate(),submitDate);
 		currentMember.setPersonPenalty(penalty);
 		
 		if(penalty > 0) {
 			System.err.println("You have "+penalty + " to pay !!!");
+			currentMember.setPersonPenalty(currentMember.getPersonPenalty()+penalty);
 		}
 		else {
 			System.out.println("Book Sumbitted successfully");
@@ -79,10 +88,11 @@ public class Library {
 	public static Integer calculateDelay(Integer memberID, LocalDate issueDate, LocalDate submitDate) {
 		
 		Integer penalty = 0;
-		if(submitDate.compareTo(issueDate) > 15){
+		System.out.println("submitDate.compareTo(issueDate) : "+submitDate.compareTo(issueDate));
+		if(issueDate.isBefore(submitDate.minusDays(15))){
 			penalty += 250;
 		}
-		return 0;
+		return penalty;
 	}
 	
 	public static void addBook(Book book) {

@@ -5,18 +5,25 @@ import java.util.Map;
 public class Person {
 	private Integer memberID;
 	private String personName;
-
+	private String pass;
+	
 	private Integer personBookID;
 	private Integer personPenalty;
 	private Integer currentTrans;
 	
 	
 	
-	public Person(Integer memberID, String personName) {
+	public Person(Integer memberID, String personName, String pass) {
 		super();
 		this.memberID = memberID;
 		this.personName = personName;
+		this.pass = pass;
 		this.personPenalty = 0;
+		this.personBookID = -1;
+	}
+	
+	public boolean checkPass(String pass) {
+		return this.pass.equals(pass);
 	}
 	
 	public Integer getMemberID() {
@@ -24,7 +31,7 @@ public class Person {
 	}
 	@Override
 	public String toString() {
-		return  Formate.formate(memberID+"", 10) + Formate.formate(personName, 20) + Formate.formate(personBookID+"", 15) + personPenalty;
+		return  Formate.formate(memberID+"", 15) + Formate.formate(personName, 20) + Formate.formate(personBookID+"", 15) + personPenalty;
 	}
 	
 	public void setMemberID(Integer memberID) {

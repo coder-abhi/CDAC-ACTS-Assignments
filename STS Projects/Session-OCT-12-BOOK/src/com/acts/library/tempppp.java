@@ -11,8 +11,8 @@ public class tempppp {
 		System.out.println(tp.name);
 		
 		LocalDate date = LocalDate.parse("2022-10-08");
-		LocalDate date2 = LocalDate.parse("2022-10-01");
-		System.out.println(date.compareTo(date2));
+		LocalDate date2 = LocalDate.parse("2022-10-12");
+		System.out.println(date.isBefore(date2.minusDays(15)));
 	}
 
 }
