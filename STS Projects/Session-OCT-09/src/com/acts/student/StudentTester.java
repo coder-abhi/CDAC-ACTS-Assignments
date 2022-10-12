@@ -15,11 +15,13 @@ public class StudentTester {
 		Student st = new Student();
 		do {
 			System.out.println("\n\n-------------MENU-------------");
-			System.out.println(" 1. Add Student "
+			System.out.println(" "
+					+	 "1. Add Student "
 					+ "\n 2. Print Student "
 					+ "\n 3. Sort Students"
 					+ "\n 4. Search student by roll number"
 					+ "\n 5. Remove particular student "
+					+ "\n 6. Find and Change Adress"
 					+ "\n 0. Exit menu ");
 
 			System.out.println("Enter Choice: ");
@@ -29,7 +31,9 @@ public class StudentTester {
 			case 1: {
 				st = StudentUtil.addStudent();
 				studentList.add(st);
-			}break;
+				break;
+			}
+
 			case 2: {
 				System.out.println("Student Details");
 				System.err.println(SFormat.strFormat("Roll No.",10)+SFormat.strFormat("Name", 15)
@@ -37,7 +41,8 @@ public class StudentTester {
 				for(Student st1 : studentList) {
 					System.out.println(st1.toString());
 				}
-			}break;
+				break;
+			}
 			case 3: {
 				do {
 					System.out.println("\n 1. Sort By Roll Number In Ascending Order "
@@ -45,6 +50,7 @@ public class StudentTester {
 							+ "\n 3. Sort by name"
 							+ "\n 4. Sort by pincode"
 							+ "\n 5. Sort by date of birth"
+
 							+ "\n 0. Goto main menu");
 					System.out.println("Enter choice:");
 					ch = sc.nextInt();
@@ -54,7 +60,7 @@ public class StudentTester {
 
 							@Override
 							public int compare(Student o1, Student o2) {
-								
+
 								return o1.getRollNo().compareTo(o2.getRollNo());
 							}
 						});
@@ -65,7 +71,7 @@ public class StudentTester {
 
 							@Override
 							public int compare(Student o1, Student o2) {
-								
+
 								return o2.getName().compareTo(o1.getName());
 							}
 						});
@@ -76,29 +82,27 @@ public class StudentTester {
 
 							@Override
 							public int compare(Student o1, Student o2) {
-								
+
 								return o1.getName().compareTo(o2.getName());
 							}
 						});
 						break;
 					}
-//					case 4:{
-//						Collections.sort(studentList, new Comparator<Student>() {
-//
-//							@Override
-//							public int compare(Student o1, Student o2) {
-//								// TODO Auto-generated method stub
-//								return o1.getAddress().getPinCode().compareTo(o2.getAddress().getPinCode());
-//							}
-//						});
-//						break;
-//					}
+					case 4:{
+						Collections.sort(studentList, new Comparator<Student>() {
+
+							@Override
+							public int compare(Student o1, Student o2) {
+								return o1.getAddressList().get(0).getPinCode().compareTo(o2.getAddressList().get(0).getPinCode());
+							}
+						});
+						break;
+					}
 					case 5:{
 						Collections.sort(studentList, new Comparator<Student>() {
 
 							@Override
 							public int compare(Student o1, Student o2) {
-								// TODO Auto-generated method stub
 								return o1.getDob().compareTo(o2.getDob());
 							}
 						});
@@ -111,46 +115,86 @@ public class StudentTester {
 					}
 				}while (ch!=0);
 
-			break;
-				
+				break;
+
 			}
 			case 4: {
 				System.out.println("Enter the Roll no to be found : ");
 				int reqNo = sc.nextInt();
-				System.out.println(findStudent(studentList,reqNo));
-break;
-	
+				Student foundStudent = findStudent(studentList,reqNo);
+				if(foundStudent != null) {
+					System.out.println("Student Found");					
+				}
+				else System.out.println("Student Not Found");					
+
+				break;
+
 			}
-				
-			
+
+
 			case 5: {
 				System.out.println("Enter the Roll no to be found : ");
 				int reqRoll = sc.nextInt();
 				removeStudent(studentList, reqRoll);
 				break;
 			}
+			case 6: {
+				System.out.println("Enter the Roll no to be found and Change Adress: ");
+				int reqRoll = sc.nextInt();
+				Student foundStudent = findStudent(studentList,reqRoll);
+				if(foundStudent == null) {
+					System.out.println("Student not Found !!.");
+					break;	
+				}
+				foundStudent.getAddressList().clear();
+
+				do {
+					Address address = StudentUtil.getAddress();
+					foundStudent.addInAdressList(address);
+					System.out.println("Do you want to add adress ? Y/N");
+				}while(sc.next().equals("Y"));
+
+				break;
+			}
 			case 0: {
 				System.exit(0);
-			}break;
+				break;
+			}
 			default : {
 				System.err.println("Wrong choice entered");
-			} break;
+				break;
+			}
 			}
 		}while(choice !=0);
 
 	}
-	
-	public static String findStudent(List<Student> studentList,int rollNo) {
+
+	public static Student findStudent(List<Student> studentList,int rollNo) {
+
 		for(Student stSearch : studentList) {
-			if(stSearch.getRollNo() == rollNo) return "Student Found !";
+			if(stSearch.getRollNo() == rollNo) return stSearch;
 		}
-		return "Student no found !!!";
+		return null;
+
 	}
-	
 	public static void removeStudent(List<Student> studentList,int rollNo) {
-		for(Student stSearch : studentList) {
-			if(stSearch.getRollNo() == rollNo) studentList.remove(stSearch);
+
+		/*
+		 * This iterator will not remove element - it will give error ConcurrentModificationException
+		 * Because List is fast failed so when we use iterator over it , we can't do structural modification
+			for(Student stSearch : studentList) {
+				if(stSearch.getRollNo() == rollNo) studentList.remove(stSearch);
+			}
+
 		}
-		
+		 */
+		for(int i=0 ; i<studentList.size() ; i++) {
+			if(studentList.get(i).getRollNo() == rollNo) {
+				studentList.remove(i);
+				return;
+			}
+			System.out.println("Student Not Found !!\n");
+		}
+
 	}
 }

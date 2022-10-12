@@ -2,6 +2,7 @@ package com.acts.student;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 public class Student implements Comparable<Student> {
@@ -23,11 +24,37 @@ public class Student implements Comparable<Student> {
 	}
 
 
-	public Student(int rollNo, String name, LocalDate dob, Course course) {
+	@Override
+	public int hashCode() {
+		return Objects.hash(addressList, course, dob, name, rollNo);
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Student other = (Student) obj;
+		return Objects.equals(addressList, other.addressList) && course == other.course
+				&& Objects.equals(dob, other.dob) && Objects.equals(name, other.name)
+				&& Objects.equals(rollNo, other.rollNo);
+	}
+
+
+	public Student(int rollNo, String name, LocalDate dob, Course course,ArrayList<Address> addressList) {
 		this.rollNo = rollNo;
 		this.name = name;
 		this.dob = dob;
 		this.course = course;
+		this.addressList = addressList;
+	}
+	
+	public void addInAdressList(Address address) {
+		this.addressList.add(address);
 	}
 
 
@@ -64,6 +91,16 @@ public class Student implements Comparable<Student> {
 
 	public Course getCourse() {
 		return course;
+	}
+
+
+	public ArrayList<Address> getAddressList() {
+		return addressList;
+	}
+
+
+	public void setAddressList(ArrayList<Address> addressList) {
+		this.addressList = addressList;
 	}
 
 
