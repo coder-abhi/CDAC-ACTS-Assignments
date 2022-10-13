@@ -44,9 +44,16 @@ public class Library {
 		
 		if(currentMember.getPersonBook() != -1) {
 			System.err.println("You Already issued a Book. Please Sumbit it first!!");
+			return;
 		}
 		
 		Book currentBook = bookList.get(BookId);
+		
+		// Check if book is available
+		if(currentBook.getQty() <= 0) {
+			System.err.println("Book is not Available!! Try alternative");
+			return;
+		}
 		
 		currentBook.setQty(currentBook.getQty()-1);
 		currentMember.setPersonBook(BookId);

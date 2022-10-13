@@ -21,11 +21,11 @@ public class LibraryTester {
 
 //		Library.ShowMembers();
 
-		Library.RentBook(11,1001,LocalDate.parse("2022-09-20"));
-		System.out.println("-".repeat(60));
+//		Library.RentBook(11,1001,LocalDate.parse("2022-09-20"));
+//		System.out.println("-".repeat(60));
 //		Library.ShowAvailableBooks();
 //		Library.ShowMembers();
-		Library.ShowTransaction();
+//		Library.ShowTransaction();
 
 
 
@@ -139,11 +139,17 @@ public class LibraryTester {
 						break;
 					}
 					case 5:{
+						int penalty = Library.memberList.get(memberID).getPersonPenalty();
 						
-						System.err.println("You have "+Library.memberList.get(memberID).getPersonPenalty() + " to pay !!!");
+						if(penalty <= 0) {
+							System.out.println("You dont have any due's");
+							break;
+						} 
+						System.err.println("You have "+penalty + " to pay !!!");
 						System.out.println("Enter Amount You want to Pay");
 						int amount = sc.nextInt();
 						Library.memberList.get(memberID).setPersonPenalty(Library.memberList.get(memberID).getPersonPenalty() - amount);
+						break;
 					}
 					case 9:{
 						Library.ShowTransaction();

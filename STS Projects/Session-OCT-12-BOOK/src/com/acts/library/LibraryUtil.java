@@ -44,10 +44,10 @@ public class LibraryUtil {
 
 		System.out.println("Enter Book Name ");
 		String name = sc.nextLine();
-		sc.nextLine();
+//		sc.nextLine();
 		System.out.println("Enter Book Author ");
 		String author = sc.nextLine();
-		sc.nextLine();
+//		sc.nextLine();
 		System.out.println("Enter Book Quantity ");
 		int qty = sc.nextInt();
 		

@@ -56,56 +56,62 @@ public class StudentTester {
 					ch = sc.nextInt();
 					switch (ch) {
 					case 1: {
-						Collections.sort(studentList, new Comparator<Student>() {
-
-							@Override
-							public int compare(Student o1, Student o2) {
-
-								return o1.getRollNo().compareTo(o2.getRollNo());
-							}
-						});
+//						Collections.sort(studentList, new Comparator<Student>() {
+//
+//							@Override
+//							public int compare(Student o1, Student o2) {
+//
+//								return o1.getRollNo().compareTo(o2.getRollNo());
+//							}
+//						});
+						
+						Collections.sort(studentList, (o1,o2)->o1.getRollNo().compareTo(o2.getRollNo()));
 						break;
 					}
 					case 2:{
-						Collections.sort(studentList, new Comparator<Student>() {
-
-							@Override
-							public int compare(Student o1, Student o2) {
-
-								return o2.getName().compareTo(o1.getName());
-							}
-						});
+//						Collections.sort(studentList, new Comparator<Student>() {
+//
+//							@Override
+//							public int compare(Student o1, Student o2) {
+//
+//								return o2.getName().compareTo(o1.getName());
+//							}
+//						});
+						Collections.sort(studentList, (o1,o2)->o2.getName().compareTo(o1.getName()));
 						break;
 					}
 					case 3:{
-						Collections.sort(studentList, new Comparator<Student>() {
-
-							@Override
-							public int compare(Student o1, Student o2) {
-
-								return o1.getName().compareTo(o2.getName());
-							}
-						});
+//						Collections.sort(studentList, new Comparator<Student>() {
+//
+//							@Override
+//							public int compare(Student o1, Student o2) {
+//
+//								return o1.getName().compareTo(o2.getName());
+//							}
+//						});
+						Collections.sort(studentList, (o1,o2)->o1.getName().compareTo(o2.getName()));
 						break;
 					}
 					case 4:{
-						Collections.sort(studentList, new Comparator<Student>() {
-
-							@Override
-							public int compare(Student o1, Student o2) {
-								return o1.getAddressList().get(0).getPinCode().compareTo(o2.getAddressList().get(0).getPinCode());
-							}
-						});
+//						Collections.sort(studentList, new Comparator<Student>() {
+//
+//							@Override
+//							public int compare(Student o1, Student o2) {
+//								return o1.getAddressList().get(0).getPinCode().compareTo(o2.getAddressList().get(0).getPinCode());
+//							}
+//						});
+						Collections.sort(studentList, (o1,o2)->o1.getAddressList().get(0).getPinCode().compareTo(o2.getAddressList().get(0).getPinCode()));
 						break;
 					}
 					case 5:{
-						Collections.sort(studentList, new Comparator<Student>() {
-
-							@Override
-							public int compare(Student o1, Student o2) {
-								return o1.getDob().compareTo(o2.getDob());
-							}
-						});
+//						Collections.sort(studentList, new Comparator<Student>() {
+//
+//							@Override
+//							public int compare(Student o1, Student o2) {
+//								return o1.getDob().compareTo(o2.getDob());
+//							}
+//						});
+						Collections.sort(studentList, (o1,o2)->o1.getDob().compareTo(o2.getDob()));
 						break;
 					}
 					case 0:
