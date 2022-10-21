@@ -66,6 +66,7 @@ public class StudentTester {
 //						});
 						
 						Collections.sort(studentList, (o1,o2)->o1.getRollNo().compareTo(o2.getRollNo()));
+						
 						break;
 					}
 					case 2:{

@@ -7,10 +7,10 @@ public class Bank implements Payable,Operation{
 		System.out.println("Payable is called !!");
 	}
 
-	@Override
-	public Object perform(Object J, Object K) {
+//	@Override
+//	public Object perform(Object J, Object K) {
 		
 //		return;
-	}
+//	}
 	
 }

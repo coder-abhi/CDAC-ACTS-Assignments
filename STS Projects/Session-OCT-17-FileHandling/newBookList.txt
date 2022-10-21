@@ -1,0 +1,5 @@
+Book [ISBN=1001, bookName=Sherlock, author=Canon Dayle, qty=5]
+Book [ISBN=1005, bookName=How To, author=Canon Dayle, qty=5]
+Book [ISBN=1003, bookName=Harry Potter, author=Canon Dayle, qty=5]
+Book [ISBN=1004, bookName=Alchamist, author=Canon Dayle, qty=5]
+Book [ISBN=1002, bookName=Holmes, author=Canon Dayle, qty=5]
