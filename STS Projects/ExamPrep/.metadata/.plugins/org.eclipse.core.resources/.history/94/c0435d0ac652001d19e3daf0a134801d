@@ -1,0 +1,62 @@
+package student;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class tester {
+public static void main(String[] args) {
+	int choice= 0;
+	Scanner sc = new Scanner (System.in);
+	
+	List<ArrayList> studentList = CollectionUtils.populateData();
+
+	do {
+		System.out.println("--------  Menu ---------");
+		System.out.println("\n 1.Display All Student"
+				+ "\n 2.Sort by GPA"
+				+ "\n 3.Sum of gpa according to specified subject"
+				+ "\n 4.Average of gpa according to specified subject"
+				+ "\n 5.Print name of specified subject topper"
+				+ "\n 6.Print names of failures for the specified subject ");
+		System.out.println("Enter Choice");
+		choice = sc.nextInt(); 
+		
+		switch(choice) {
+		
+		case 1:{
+			
+			break;
+		}
+		
+		case 2:{
+			
+			
+			break;
+		}
+		
+		case 3:{
+			
+			break;
+		}
+		
+		case 4:{
+			
+			break;
+		}
+		
+		case 5:{
+			
+			break;
+		}
+		case 6:{
+			
+			break;
+		}
+		}
+		
+		
+		
+	}while (choice!=0);
+}
+}

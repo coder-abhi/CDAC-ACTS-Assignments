@@ -83,7 +83,7 @@ public class Library {
 		
 		if(penalty > 0) {
 			System.err.println("You have "+penalty + " to pay !!!");
-			currentMember.setPersonPenalty(currentMember.getPersonPenalty()+penalty);
+			currentMember.setPersonPenalty(currentMember.getPersonPenalty());
 		}
 		else {
 			System.out.println("Book Sumbitted successfully");
@@ -91,17 +91,17 @@ public class Library {
 		
 	}
 	
-
 	public static Integer calculateDelay(Integer memberID, LocalDate issueDate, LocalDate submitDate) {
-		
+
 		Integer penalty = 0;
-		System.out.println("submitDate.compareTo(issueDate) : "+submitDate.compareTo(issueDate));
+		
+//		System.out.println("submitDate.compareTo(issueDate) : "+submitDate.compareTo(issueDate));
 		if(issueDate.isBefore(submitDate.minusDays(15))){
 			penalty += 250;
 		}
 		return penalty;
 	}
-	
+
 	public static void addBook(Book book) {
 		bookList.put(book.getISBN(), book);
 	}

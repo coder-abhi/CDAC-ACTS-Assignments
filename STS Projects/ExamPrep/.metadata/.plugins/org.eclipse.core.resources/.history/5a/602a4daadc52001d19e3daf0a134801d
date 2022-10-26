@@ -1,0 +1,25 @@
+package manager;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+public class tester {
+	public static int taskId = 100;
+	public static void main(String[] args) {
+		List<Task> taskList = new ArrayList<>();
+		taskList.add(new Task(taskId++,"Study","Core Java", LocalDate.parse("2022-10-23")));
+		taskList.add(new Task(taskId++,"Sketch","Abstract Art", LocalDate.parse("2022-10-21")));
+		taskList.add(new Task(taskId++,"Play","Counter Strike", LocalDate.parse("2022-10-25")));
+		
+		do {
+			System.out.println("---------Menu----------");
+			 
+			
+			
+		}
+		
+		
+	}
+
+}

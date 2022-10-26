@@ -52,7 +52,8 @@ public class LibraryTester {
 				System.out.println(""
 						+ "\n1. Print Member List"
 						+ "\n2. Add New Books"
-						+ "\n3. Show Available Books");
+						+ "\n3. Show Available Books"
+						+ "\n0. For Main Menu");
 					ownerChoice = sc.nextInt();
 					switch (ownerChoice) {
 						case 1: {
@@ -124,6 +125,10 @@ public class LibraryTester {
 
 					}
 					case 3: {
+						if(Library.memberList.get(memberID).getPersonBook() == -1) {
+							System.err.println("You dont have any book to submit !!");
+							break;
+						}
 						System.out.println("Enter Today's Date");
 						String submitDate = sc.next();
 						Library.submitBook(memberID, LocalDate.parse(submitDate));
