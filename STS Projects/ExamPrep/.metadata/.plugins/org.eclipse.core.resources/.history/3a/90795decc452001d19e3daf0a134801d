@@ -1,0 +1,9 @@
+package student;
+
+public interface CollectionUtils {
+	
+	public List<Student> populateData(){
+		
+	}
+
+}

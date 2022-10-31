@@ -1,0 +1,89 @@
+package manager;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class tester {
+	public static int taskId = 100;
+	public static void main(String[] args) {
+		List<Task> taskList = new ArrayList<>();
+		int choice = 0;
+		Scanner sc = new Scanner(System.in);
+		taskList.add(new Task(taskId++,"Study","Core Java", LocalDate.parse("2022-10-23")));
+		taskList.add(new Task(taskId++,"Sketch","Abstract Art", LocalDate.parse("2022-10-21")));
+		taskList.add(new Task(taskId++,"Play","Counter Strike", LocalDate.parse("2022-10-25")));
+		do {
+			System.out.println("---------Menu----------");
+			System.out.println("\n 1. Add new task"
+					+ "\n 2. Delete a task"
+					+ "\n 3. Update task status"
+					+ "\n 4. Display all pending task"
+					+ "\n 5. Display all pending tasks for today"
+					+ "\n 6. Display all task sorted by task date");
+			System.out.println("Enter your choice:");
+			choice = sc.nextInt();
+			switch(choice) {
+			
+			case 0:{
+				taskList.forEach(System.out::println);
+				break;
+			}
+			
+			case 1:{
+				System.out.println("Enter task name");
+				String name = sc.nextLine();
+				System.out.println("Enter task description");
+				String description = sc.nextLine();
+				System.out.println("Enter task date");
+				String dt = sc.nextLine();
+				LocalDate date = LocalDate.parse(dt);
+
+				taskList.add(new Task(taskId++, name, description, date));
+				System.out.println("Task Added Successfully");
+				break;
+			}
+			
+			case 2:{
+				System.out.println("Enter task Id to remove task");
+				int taskId = sc.nextInt();
+				for(Task t : taskList) {
+					if(t.getTaskId() == taskId) {
+						taskList.remove(t);
+						System.out.println("Task removed successfully");
+					}
+				}
+			
+				
+				
+				break;
+			}
+			
+			case 3:{
+				
+				break;
+			}
+			case 4:{
+				
+				break;
+			}
+			case 5:{
+				
+				break;
+			}
+			default: {
+				
+				break;
+			}
+
+
+
+			}
+
+		}while(choice !=0);
+
+    sc.close();
+	}
+
+}

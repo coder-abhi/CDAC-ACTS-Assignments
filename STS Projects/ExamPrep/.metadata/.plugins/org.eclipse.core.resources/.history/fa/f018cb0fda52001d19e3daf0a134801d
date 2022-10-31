@@ -1,0 +1,9 @@
+package manager;
+
+public class tester {
+	public static int taskId = 100;
+	public static void main(String[] args) {
+		
+	}
+
+}
