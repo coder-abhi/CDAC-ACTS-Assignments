@@ -11,5 +11,4 @@ public class Tester {
 		System.out.println(st.pop());
 		System.out.println(st.pop());
 	}
-
 }
