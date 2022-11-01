@@ -6,7 +6,7 @@ public class Queue implements QueueInterface {
 	int front;
 	int rear;
 
-	Queue(int length){
+	Queue(int length) {
 		this.queueArray = new int[length];
 		front = -1;
 		rear = -1;
@@ -14,32 +14,39 @@ public class Queue implements QueueInterface {
 
 	@Override
 	public boolean isFull() {
-		if(rear == queueArray.length-1)  return true;
+		if (rear == queueArray.length - 1)
+			return true;
 		return false;
 	}
 
 	@Override
 	public boolean isEmpty() {
-		if(rear == front) return true;
+		if (rear == front)
+			return true;
 		return false;
 	}
 
 	@Override
 	public void addQ(int element) {
 
-		if(!isFull()) {
+		if (!isFull()) {
 			this.queueArray[++rear] = element;
-		}
-		else System.out.println("Queue is already Full");
+		} else
+			System.out.println("Queue is already Full");
 	}
 
 	@Override
 	public int deleteQ() {
-		if(!isEmpty()) {
+		if (!isEmpty()) {
 			return queueArray[++front];
-		}else System.out.println("Queue is already empty");
-		
+		} else
+			System.out.println("Queue is already empty");
+
 		return 0;
+	}
+
+	void clear() {
+		front = rear = -1;
 	}
 
 }
